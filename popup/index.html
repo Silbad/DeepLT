@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DeepLT</title>
+    <link rel="stylesheet" href="./../css/deeplt.css"/>
+    <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./../js/deeplt.js"></script>
+  </head>
+
+  <body>
+      <div class="container-fluid d-flex flex-column p-1">
+
+          <div class="locales d-flex">
+              <div class="form-group p-1">
+                  <select id="trad-origin" class="form-control" name="trad-origin">
+                      <option dl-value="auto">N'importe quelle langue (détecter)</option>
+                      <option dl-value="FR">Français</option>
+                      <option dl-value="EN">Anglais</option>
+                      <option dl-value="DE">Allemand</option>
+                      <option dl-value="ES">Espagnol</option>
+                      <option dl-value="IT">Italien</option>
+                      <option dl-value="NL">Néerlandais</option>
+                      <option dl-value="PL">Polonais</option>
+                  </select>
+              </div>
+              <div class="p-1">
+                  <img src="./../icons/arrow.svg" alt="arrow" width="40" height="40" />
+              </div>
+              <div class="form-group p-1">
+                  <select id="trad-deepl" class="form-control" name="trad-deepl">
+                      <option dl-value="FR">Français</option>
+                      <option dl-value="EN">Anglais</option>
+                      <option dl-value="DE">Allemand</option>
+                      <option dl-value="ES">Espagnol</option>
+                      <option dl-value="IT">Italien</option>
+                      <option dl-value="NL">Néerlandais</option>
+                      <option dl-value="PL">Polonais</option>
+                  </select>
+              </div>
+          </div>
+
+          <div class="search">
+              <div class="form-group p-1">
+                <input id="trad-search" type="text" class="form-control" placeholder="Texte à traduire..." aria-label="Texte à traduire...">
+              </div>
+          </div>
+
+          <div class="result">
+              <div class="form-group p-1">
+                  <textarea id="trad-result" class="form-control" name="trad-result" readonly></textarea>
+              </div>
+          </div>
+
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "DeepLT",
+	"version": "1.0.0",
+	"description": "A simple translator powered by DeepL",
+	"icons": {
+		"16": "icons/logo-16.png",
+		"48": "icons/logo-48.png",
+		"96": "icons/logo-96.png"
+	},
+	"browser_action": {
+		"default_icon": "icons/logo-96.png",
+		"default_title": "DeepLT",
+		"default_popup": "popup/index.html"
+	}
+}
