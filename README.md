@@ -1,6 +1,9 @@
 # DeepLT
 A simple translation extension for Firefox powered by DeepL
 
+# Screenshot
+![DeepLT](https://addons.cdn.mozilla.net/user-media/previews/full/192/192191.png)
+
 ## Steps for dev
 * Install Node.js & Yarn [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 * Launch a cmd window
@@ -20,6 +23,9 @@ yarn gulp
 ```
 yarn web-ext run
 ```
+
+## Firefox Add-ons
+[https://addons.mozilla.org/fr/firefox/addon/deeplt/](https://addons.mozilla.org/fr/firefox/addon/deeplt/)
 
 ## Specials thanks
 * [Deepl Translator](https://www.deepl.com/translator)
