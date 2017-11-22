@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_deepLTName__",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "__MSG_deepLTDescription__",
 	"default_locale": "en",
 	"icons": {
@@ -9,6 +9,7 @@
 		"96": "icons/logo@2x.png"
 	},
 	"browser_action": {
+		"browser_style": true,
 		"default_icon": "icons/logo@2x.png",
 		"default_title": "DeepLT",
 		"default_popup": "popup/index.html"

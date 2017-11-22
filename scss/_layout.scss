@@ -1,8 +1,20 @@
 .arrow {
-    line-height: 32px;
+    line-height: 25px;
 }
 
 .arrow img {
-    width: 26px;
-    height: 26px;
+    width: 16px;
+    height: 16px;
+}
+
+.deepl {
+    padding: 10px;
+    & img {
+        width: 80px;
+        cursor: pointer;
+        transition: all 0.2s linear 0s;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 }

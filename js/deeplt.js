@@ -21,6 +21,14 @@ $(function() {
     $('#lang-origin option[value="NL"], #lang-target option[value="NL"]').html(dutch);
     $('#lang-origin option[value="PL"], #lang-target option[value="PL"]').html(polish);
     $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated);
+    $('.deepl img').attr('alt', name);
+
+    // add event to open DeepL website
+    $('.deepl img').on('click', function(){
+        browser.tabs.create({
+            url: 'https://www.deepl.com/'
+        });
+    });
 
     // add event translation system
     $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
