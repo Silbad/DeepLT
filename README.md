@@ -2,7 +2,7 @@
 A simple translation extension for Firefox powered by DeepL
 
 # Screenshot
-![DeepLT](https://addons.cdn.mozilla.net/user-media/previews/full/192/192191.png)
+![DeepLT](./screenshots/deeplt_1.1.0.png)
 
 ## Steps for dev
 * Install Node.js & Yarn [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
@@ -15,11 +15,11 @@ cd C:\path_to_folder
 ```
 yarn
 ```
-* Launch Gulp tasks
+* Launch Gulp tasks :
 ```
 yarn gulp
 ```
-* Launch the WebExtension
+* Launch the WebExtension :
 ```
 yarn web-ext run
 ```
