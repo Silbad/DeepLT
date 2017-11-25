@@ -1,4 +1,8 @@
 $(function() {
+
+    // get lang from UI
+    var langUI = browser.i18n.getUILanguage().toUpperCase();
+
     // add localization i18n items
     var name = browser.i18n.getMessage('deepLTName');
     var description = browser.i18n.getMessage('deepLTDescription');
@@ -30,8 +34,12 @@ $(function() {
         });
     });
 
+    var callID = 0;
+
     // add event translation system
     $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
+
+        callID++;
 
         var text = $('#trad-search').val().trim();
         var lang_origin = $('#lang-origin').val();
@@ -56,16 +64,20 @@ $(function() {
 							raw_en_sentence: text
 						}],
 						lang: {
-							user_preferred_langs: ['FR','EN'],
+							user_preferred_langs: [langUI,'EN'],
 							source_lang_user_selected: lang_origin,
 							target_lang: lang_target
 						},
 						priority: -1
 					},
-					id: '9'
+					id: callID
 				}),
 				success: function(response) {
-					$('#trad-result').val(response.result.translations[0].beams[0].postprocessed_sentence);
+                    console.log(response);
+					$('#trad-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
+                    $('#trad-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
+                    $('#trad-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
+                    $('#trad-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
 				},
 				error:function(xhr,status,error){
 					console.log(xhr,status,error);

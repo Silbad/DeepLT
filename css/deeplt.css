@@ -4339,7 +4339,7 @@ button.close {
     margin-right: 3px;
     margin-left: 3px;
     text-indent: -999px;
-    background-color: rgba(255, 255, 255, 0.5); }
+    background-color: rgba(4, 43, 72, 0.5); }
     .carousel-indicators li::before {
       position: absolute;
       top: -10px;
@@ -4357,7 +4357,7 @@ button.close {
       height: 10px;
       content: ""; }
   .carousel-indicators .active {
-    background-color: #fff; }
+    background-color: #042B48; }
 
 .carousel-caption {
   position: absolute;
@@ -6258,7 +6258,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 textarea {
   resize: none;
-  height: 340px;
+  height: 120px;
   overflow: auto; }
 
 .form-group {
@@ -6279,3 +6279,7 @@ textarea {
     transition: all 0.2s linear 0s; }
     .deepl img:hover {
       opacity: 0.8; }
+
+.carousel-indicators {
+  bottom: -9px;
+  cursor: pointer; }

@@ -1,0 +1,46 @@
+{
+    "deepLTName": {
+        "message": "DeepLT",
+        "description": "Naam van de uitbreiding"
+    },
+    "deepLTDescription": {
+        "message": "Eenvoudige vertaling extensie voor Firefox aangedreven door DeepL",
+        "description": "Beschrijving van de uitbreiding"
+    },
+    "deepLTAuto": {
+        "message": "Elke taal (detecteren)",
+        "description": "Automatische taalherkenning"
+    },
+    "deepLTFrench": {
+        "message": "Frans",
+        "description": "Franse taal"
+    },
+    "deepLTEnglish": {
+        "message": "Engels",
+        "description": "Engelse taal"
+    },
+    "deepLTGerman": {
+        "message": "Duits",
+        "description": "Duitse taal"
+    },
+    "deepLTSpanish": {
+        "message": "Spaans",
+        "description": "Spaanse taal"
+    },
+    "deepLTItalian": {
+        "message": "Italiaans",
+        "description": "Italiaanse taal"
+    },
+    "deepLTDutch": {
+        "message": "Nederlander",
+        "description": "Nederlandse taal"
+    },
+    "deepLTPolish": {
+        "message": "Pools",
+        "description": "Poolse taal"
+    },
+    "deepLTTextToBeTranslated": {
+        "message": "Te vertalen tekst....",
+        "description": "Standaard tekst in het vertaalveld"
+    }
+}
