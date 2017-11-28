@@ -34,13 +34,24 @@ $(function() {
         });
     });
 
-    var callID = 0;
+    // add event to open GitHub repository
+    $('.params .fa-github').on('click', function(){
+        browser.tabs.create({
+            url: 'https://github.com/Silbad/DeepLT'
+        });
+    });
+
+    // add event to open params
+    $('.params .fa-cog').on('click', function(){
+        browser.runtime.openOptionsPage()
+    });
 
     // add event translation system
+    var callID = 0;
+
     $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
 
         callID++;
-
         var text = $('#trad-search').val().trim();
         var lang_origin = $('#lang-origin').val();
         var lang_target = $('#lang-target').val();
@@ -73,14 +84,13 @@ $(function() {
 					id: callID
 				}),
 				success: function(response) {
-                    console.log(response);
 					$('#trad-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
                     $('#trad-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
                     $('#trad-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
                     $('#trad-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
 				},
 				error:function(xhr,status,error){
-					console.log(xhr,status,error);
+                    $('#trad-result-0, #trad-result-1, #trad-result-2, #trad-result-3').html(error);
 				}
 			});
 		}

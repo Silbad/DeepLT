@@ -1,0 +1,46 @@
+{
+    "deepLTName": {
+        "message": "DeepLT",
+        "description": "Nombre de la extensión"
+    },
+    "deepLTDescription": {
+        "message": "Una extensión de traducción simple para Firefox impulsado por DeepL",
+        "description": "Descripción de la extensión"
+    },
+    "deepLTAuto": {
+        "message": "Cualquier idioma (detectar)",
+        "description": "Detección automática de idiomas"
+    },
+    "deepLTFrench": {
+        "message": "Francés",
+        "description": "Lengua francesa"
+    },
+    "deepLTEnglish": {
+        "message": "Inglés",
+        "description": "Lengua inglesa"
+    },
+    "deepLTGerman": {
+        "message": "Alemán",
+        "description": "Lengua alemana"
+    },
+    "deepLTSpanish": {
+        "message": "Español",
+        "description": "Lengua española"
+    },
+    "deepLTItalian": {
+        "message": "Italiano",
+        "description": "lengua italiana"
+    },
+    "deepLTDutch": {
+        "message": "Holandés",
+        "description": "Lengua neerlandesa"
+    },
+    "deepLTPolish": {
+        "message": "Polaco",
+        "description": "Lengua polaca"
+    },
+    "deepLTTextToBeTranslated": {
+        "message": "Texto a traducir...",
+        "description": "Texto por defecto en el campo de traducción"
+    }
+}

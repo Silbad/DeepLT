@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-rename": "^1.2.2",

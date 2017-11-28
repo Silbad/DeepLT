@@ -1,10 +1,8 @@
-.arrow {
-    line-height: 25px;
-}
-
-.arrow img {
-    width: 16px;
-    height: 16px;
+.fa-angle-right {
+    color: #e99b35;
+    font-size: 2.4rem;
+    line-height: 28px;
+    margin: 0 5px;
 }
 
 .deepl {
@@ -19,7 +17,28 @@
     }
 }
 
+.params {
+    i {
+        cursor: pointer;
+        font-size: 1.6rem;
+        color: $deeplt-blue;
+        transition: all 0.2s linear 0s;
+        margin: 0 0 0 10px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
 .carousel-indicators {
     bottom: -9px;
     cursor: pointer;
+}
+
+.version {
+    color: #ccc;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 2px;
+    right: 8px;
 }

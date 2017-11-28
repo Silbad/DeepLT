@@ -49,6 +49,19 @@ gulp.task('sync-bootstrap', (done) => {
     });
 });
 
+gulp.task('sync-fa', (done) => {
+    syncy(['node_modules/font-awesome/fonts/**'], 'fonts/', {
+        verbose: true,
+        base: 'node_modules/font-awesome/fonts/'
+    })
+    .then(() => {
+        done();
+    })
+    .catch((err) => {
+        done(err);
+    });
+});
+
 // sass -> css -> min
 gulp.task('sass', function () {
     return gulp.src('./scss/**/*.scss')
@@ -68,4 +81,4 @@ gulp.task('watch', function () {
     gulp.watch('scss/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['sync-jquery', 'sync-popper', 'sync-bootstrap', 'sass', 'watch']);
+gulp.task('default', ['sync-jquery', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass', 'watch']);
