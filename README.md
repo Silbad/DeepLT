@@ -34,3 +34,4 @@ yarn web-ext run
 * [Bootstrap](https://getbootstrap.com)
 * [Yarn](https://yarnpkg.com)
 * [Gulp](https://gulpjs.com)
+* [Font Awesome](http://fontawesome.io/)
