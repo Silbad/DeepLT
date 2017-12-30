@@ -62,23 +62,38 @@ gulp.task('sync-fa', (done) => {
     });
 });
 
-// sass -> css -> min
-gulp.task('sass', function () {
-    return gulp.src('./scss/**/*.scss')
+// popup : sass -> css -> min
+gulp.task('sass-popup', function () {
+    return gulp.src('./scss/popup.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(rename('deeplt.css'))
-        .pipe(gulp.dest('./css'))
+        .pipe(rename('popup.css'))
+        .pipe(gulp.dest('./app'))
         .on('end', function () {
-            return gulp.src('./css/*.css')
+            return gulp.src('./app/popup.css')
                 .pipe(cleanCSS())
-                .pipe(rename('deeplt-min.css'))
-                .pipe(gulp.dest('./css'));
+                .pipe(rename('popup-min.css'))
+                .pipe(gulp.dest('./app'));
+        });
+});
+
+// options : sass -> css -> min
+gulp.task('sass-options', function () {
+    return gulp.src('./scss/options.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(rename('options.css'))
+        .pipe(gulp.dest('./app'))
+        .on('end', function () {
+            return gulp.src('./app/options.css')
+                .pipe(cleanCSS())
+                .pipe(rename('options-min.css'))
+                .pipe(gulp.dest('./app'));
         });
 });
 
 // watch
 gulp.task('watch', function () {
-    gulp.watch('scss/**/*.scss', ['sass']);
+    gulp.watch('scss/**/*.scss', ['sass-popup']);
+    gulp.watch('scss/**/*.scss', ['sass-options']);
 });
 
-gulp.task('default', ['sync-jquery', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass', 'watch']);
+gulp.task('default', ['sync-jquery', 'sync-popper', 'sync-bootstrap', 'sync-fa', 'sass-popup', 'sass-options', 'watch']);

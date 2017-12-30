@@ -42,5 +42,33 @@
     "deepLTTextToBeTranslated": {
         "message": "Zu übersetzender text...",
         "description": "Standardtext im übersetzungsfeld"
+    },
+    "deepLTViewAlternativeTranslations": {
+        "message": "Alternative Übersetzungen",
+        "description": "Label des ersten parameters"
+    },
+    "deepLTViewAlternativeTranslationsOption1": {
+        "message": "keine",
+        "description": "Label der ersten option des ersten parameters"
+    },
+    "deepLTViewAlternativeTranslationsOption2": {
+        "message": "diashow",
+        "description": "Label der zweiten option des ersten parameters"
+    },
+    "deepLTViewAlternativeTranslationsOption3": {
+        "message": "börsennotiert",
+        "description": "Label der dritten option des ersten parameters"
+    },
+    "deepLTMemorizeLanguageSelection": {
+        "message": "Ausgewählte sprachen speichern (5 min)",
+        "description": "Label des zweiten parameters"
+    },
+    "deepLTMemorizeLanguageSelectionOption1": {
+        "message": "allzeit",
+        "description": "Label der ersten option des zweiten parameters"
+    },
+    "deepLTMemorizeLanguageSelectionOption2": {
+        "message": "niemals",
+        "description": "Label der zweiten option des zweiten parameters"
     }
 }

@@ -2,7 +2,9 @@
 A simple translation extension for Firefox powered by DeepL
 
 # Screenshot
-![DeepLT](./screenshots/deeplt_1.3.0.png)
+![DeepLT](./screenshots/deeplt_1.4.0_1.png)
+![DeepLT](./screenshots/deeplt_1.4.0_2.png)
+![DeepLT](./screenshots/deeplt_1.4.0_3.png)
 
 ## Steps for dev
 * Install Node.js & Yarn [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)

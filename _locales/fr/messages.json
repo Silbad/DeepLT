@@ -42,5 +42,33 @@
     "deepLTTextToBeTranslated": {
         "message": "Texte à traduire...",
         "description": "Texte par défaut dans le champ de traduction"
+    },
+    "deepLTViewAlternativeTranslations": {
+        "message": "Afficher les traductions alternatives",
+        "description": "Label du premier paramètre"
+    },
+    "deepLTViewAlternativeTranslationsOption1": {
+        "message": "aucune",
+        "description": "Label de la première option du premier paramètre"
+    },
+    "deepLTViewAlternativeTranslationsOption2": {
+        "message": "en diaporama",
+        "description": "Label de la deuxième option du premier paramètre"
+    },
+    "deepLTViewAlternativeTranslationsOption3": {
+        "message": "en liste",
+        "description": "Label de la troisième option du premier paramètre"
+    },
+    "deepLTMemorizeLanguageSelection": {
+        "message": "Mémoriser les langues sélectionnées (5 min)",
+        "description": "Label du deuxième paramètre"
+    },
+    "deepLTMemorizeLanguageSelectionOption1": {
+        "message": "toujours",
+        "description": "Label de la première option du deuxième paramètre"
+    },
+    "deepLTMemorizeLanguageSelectionOption2": {
+        "message": "jamais",
+        "description": "Label de la deuxième option du deuxième paramètre"
     }
 }

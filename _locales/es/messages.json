@@ -42,5 +42,33 @@
     "deepLTTextToBeTranslated": {
         "message": "Texto a traducir...",
         "description": "Texto por defecto en el campo de traducción"
+    },
+    "deepLTViewAlternativeTranslations": {
+        "message": "Ver traducciones alternativas",
+        "description": "Etiqueta del primer parámetro"
+    },
+    "deepLTViewAlternativeTranslationsOption1": {
+        "message": "ninguno",
+        "description": "Etiqueta de la primera opción del primer parámetro"
+    },
+    "deepLTViewAlternativeTranslationsOption2": {
+        "message": "diaporama",
+        "description": "Etiqueta de la segunda opción del primer parámetro"
+    },
+    "deepLTViewAlternativeTranslationsOption3": {
+        "message": "listado",
+        "description": "Etiqueta de la tercera opción del primer parámetro"
+    },
+    "deepLTMemorizeLanguageSelection": {
+        "message": "Guardar idiomas seleccionados (5 min)",
+        "description": "Etiqueta del segundo parámetro"
+    },
+    "deepLTMemorizeLanguageSelectionOption1": {
+        "message": "siempre",
+        "description": "Etiqueta de la primera opción del segundo parámetro"
+    },
+    "deepLTMemorizeLanguageSelectionOption2": {
+        "message": "nunca",
+        "description": "Etiqueta de la segunda opción del segundo parámetro"
     }
 }
