@@ -23,7 +23,7 @@ $(function() {
     var lang_origin = '';
     var lang_target = '';
 
-    browser.storage.local.get('memoLang').then(function(item){
+    browser.storage.local.get('memoLang').then(function(item) {
         if (item.memoLang === undefined || item.memoLang === '0') {
             lang_origin = $('#lang-origin').val();
             lang_target = $('#lang-target').val();
@@ -145,7 +145,7 @@ $(function() {
 				contentType: 'text/plain',
 				crossDomain: true,
 				type: 'POST',
-				dataType: "json",
+				dataType: 'json',
 				data: JSON.stringify({
 					jsonrpc: '2.0',
 					method: 'LMT_handle_jobs',
@@ -176,8 +176,7 @@ $(function() {
                     $('#list-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
                     $('#list-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
 				},
-				error:function(xhr,status,error){
-                    alert(x.status);
+				error:function(xhr,status,error) {
                     $('#simple-result', '#carousel-result-0, #carousel-result-1, #carousel-result-2, #carousel-result-3', '#list-result-0, #list-result-1, #list-result-2, #list-result-3').html(error);
 				}
 			});

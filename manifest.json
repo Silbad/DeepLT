@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_deepLTName__",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "__MSG_deepLTDescription__",
 	"homepage_url": "https://github.com/Silbad/DeepLT",
 	"default_locale": "en",
@@ -13,11 +13,12 @@
       "page": "app/options.htm",
 	  "browser_style": true
     },
-	"permissions": ["storage"],
+	"permissions": ["storage", "contextMenus", "activeTab", "clipboardRead", "clipboardWrite"],
 	"developer": {
 		"name": "Silbad",
 		"url": "https://github.com/Silbad/DeepLT"
 	},
+	"content_security_policy": "script-src 'self' https://www.deepl.com; object-src 'self'",
 	"browser_action": {
 		"browser_style": true,
 		"default_icon": "icons/logo@2x.png",

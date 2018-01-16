@@ -8,7 +8,7 @@ let cleanCSS = require('gulp-clean-css');
 
 // mise à jour des fichiers spécifiques provenant de node_modules
 gulp.task('sync-jquery', (done) => {
-    syncy(['node_modules/jquery/dist/*.js'], 'js/', {
+    syncy(['node_modules/jquery/dist/*jquery.min.js'], 'js/', {
         verbose: true,
         updateAndDelete: false,
         base: 'node_modules/jquery/dist/'
@@ -22,7 +22,7 @@ gulp.task('sync-jquery', (done) => {
 });
 
 gulp.task('sync-popper', (done) => {
-    syncy(['node_modules/popper.js/dist/umd/*.js'], 'js/', {
+    syncy(['node_modules/popper.js/dist/umd/*popper.min.js'], 'js/', {
         verbose: true,
         updateAndDelete: false,
         base: 'node_modules/popper.js/dist/umd/'
@@ -36,7 +36,7 @@ gulp.task('sync-popper', (done) => {
 });
 
 gulp.task('sync-bootstrap', (done) => {
-    syncy(['node_modules/bootstrap/dist/js/*.js'], 'js/', {
+    syncy(['node_modules/bootstrap/dist/js/*bootstrap.min.js'], 'js/', {
         verbose: true,
         updateAndDelete: false,
         base: 'node_modules/bootstrap/dist/js/'
