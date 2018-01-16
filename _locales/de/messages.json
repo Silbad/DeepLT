@@ -1,74 +1,74 @@
 {
     "deepLTName": {
         "message": "DeepLT",
-        "description": "Name der erweiterung"
+        "description": "Name der Erweiterung"
     },
     "deepLTDescription": {
-        "message": "Eine einfache übersetzungserweiterung für Firefox powered by DeepL",
-        "description": "Beschreibung der erweiterung"
+        "message": "Eine einfache Übersetzungserweiterung für Firefox powered by DeepL",
+        "description": "Beschreibung der Erweiterung"
     },
     "deepLTAuto": {
-        "message": "Jede sprache (erkennen)",
-        "description": "Automatische spracherkennung"
+        "message": "Jede Sprache (erkennen)",
+        "description": "Automatische Spracherkennung"
     },
     "deepLTFrench": {
         "message": "Französisch",
-        "description": "Französische sprache"
+        "description": "Französische Sprache"
     },
     "deepLTEnglish": {
         "message": "Englisch",
-        "description": "Englisch sprache"
+        "description": "Englische Sprache"
     },
     "deepLTGerman": {
         "message": "Deutsch",
-        "description": "Deutsch sprache"
+        "description": "Deutsche Sprache"
     },
     "deepLTSpanish": {
         "message": "Spanisch",
-        "description": "Spanisch sprache"
+        "description": "Spanische Sprache"
     },
     "deepLTItalian": {
         "message": "Italienisch",
-        "description": "Italienisch sprache"
+        "description": "Italienische Sprache"
     },
     "deepLTDutch": {
         "message": "Niederländisch",
-        "description": "Niederländisch sprache"
+        "description": "Niederländische Sprache"
     },
     "deepLTPolish": {
         "message": "Polnisch",
-        "description": "Polnisch sprache"
+        "description": "Polnische Sprache"
     },
     "deepLTTextToBeTranslated": {
-        "message": "Zu übersetzender text...",
-        "description": "Standardtext im übersetzungsfeld"
+        "message": "Zu Übersetzender Text...",
+        "description": "Standardtext im Übersetzungsfeld"
     },
     "deepLTViewAlternativeTranslations": {
-        "message": "Alternative Übersetzungen",
-        "description": "Label des ersten parameters"
+        "message": "Alternative Übersetzungen anzeigen",
+        "description": "Label des ersten Parameters"
     },
     "deepLTViewAlternativeTranslationsOption1": {
-        "message": "keine",
-        "description": "Label der ersten option des ersten parameters"
+        "message": "Ausschalten",
+        "description": "Label der ersten Option des ersten Parameters"
     },
     "deepLTViewAlternativeTranslationsOption2": {
-        "message": "diashow",
-        "description": "Label der zweiten option des ersten parameters"
+        "message": "Diashow",
+        "description": "Label der zweiten Option des ersten Parameters"
     },
     "deepLTViewAlternativeTranslationsOption3": {
-        "message": "börsennotiert",
-        "description": "Label der dritten option des ersten parameters"
+        "message": "Untereinander",
+        "description": "Label der dritten Option des ersten Parameters"
     },
     "deepLTMemorizeLanguageSelection": {
-        "message": "Ausgewählte sprachen speichern (5 min)",
-        "description": "Label des zweiten parameters"
+        "message": "Ausgewählte Sprachen speichern (5 min)",
+        "description": "Label des zweiten Parameters"
     },
     "deepLTMemorizeLanguageSelectionOption1": {
-        "message": "allzeit",
-        "description": "Label der ersten option des zweiten parameters"
+        "message": "Ja",
+        "description": "Label der ersten Option des zweiten Parameters"
     },
     "deepLTMemorizeLanguageSelectionOption2": {
-        "message": "niemals",
-        "description": "Label der zweiten option des zweiten parameters"
+        "message": "Nein",
+        "description": "Label der zweiten Option des zweiten Parameters"
     }
 }
