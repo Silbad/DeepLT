@@ -103,6 +103,22 @@ $(function() {
         });
     });
 
+    // add event to switch lang
+    $('.arrow i').on('click', function(){
+        var tmpOrigin = $('#lang-origin').val();
+        var tmpTarget = $('#lang-target').val();
+        if (tmpOrigin != 'auto') {
+            $('#lang-origin').val(tmpTarget);
+            $('#lang-target').val(tmpOrigin);
+        } else {
+            $('#lang-origin').val(tmpTarget);
+            $('#lang-target').val(langUI);
+        }
+        browser.storage.local.set({ langOrigin: tmpTarget });
+        browser.storage.local.set({ langTarget: tmpOrigin });
+        browser.storage.local.set({ sessionDate: new Date() });
+    });
+
     // add event to open params
     $('.params .fa-cog').on('click', function(){
         browser.runtime.openOptionsPage()
@@ -141,9 +157,8 @@ $(function() {
 		}
 		else {
 			$.ajax({
-				url: 'https://www.deepl.com/jsonrpc',
+				url: 'https://cors-anywhere.herokuapp.com/https://www.deepl.com/jsonrpc',
 				contentType: 'text/plain',
-				crossDomain: true,
 				type: 'POST',
 				dataType: 'json',
 				data: JSON.stringify({

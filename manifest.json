@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_deepLTName__",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"description": "__MSG_deepLTDescription__",
 	"homepage_url": "https://github.com/Silbad/DeepLT",
 	"default_locale": "en",
