@@ -18,7 +18,6 @@
 		"name": "Silbad",
 		"url": "https://github.com/Silbad/DeepLT"
 	},
-	"content_security_policy": "script-src 'self' https://www.deepl.com; object-src 'self'",
 	"browser_action": {
 		"browser_style": true,
 		"default_icon": "icons/logo@2x.png",

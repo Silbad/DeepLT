@@ -112,8 +112,6 @@ $(function() {
             browser.storage.local.set({ typeTrad: 0 });
         }
 
-        console.log(tmpSessionDate, tmpLangOrigin, tmpLangTarget, tmpMemoLang, tmpTypeTrad);
-
         // session control
         if ((tmpSessionDate != undefined) && (tmpSessionDate != '') && (tmpMemoLang == 1)) {
 
