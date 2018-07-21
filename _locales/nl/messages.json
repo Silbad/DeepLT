@@ -60,7 +60,7 @@
         "description": "Etiket van de derde optie van de eerste parameter"
     },
     "deepLTMemorizeLanguageSelection": {
-        "message": "Geselecteerde talen opslaan (5 min)",
+        "message": "Geselecteerde talen opslaan (10 min)",
         "description": "Label van de tweede parameter"
     },
     "deepLTMemorizeLanguageSelectionOption1": {

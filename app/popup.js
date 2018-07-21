@@ -2,52 +2,10 @@ $(function() {
 
     // get lang from UI
     var langUI = browser.i18n.getUILanguage().toUpperCase();
-
-    // session control
-    let getSessionDate = browser.storage.local.get('sessionDate');
-    if ((getSessionDate != undefined) && (getSessionDate != '') && (getSessionDate != null)) {
-        getSessionDate.then(function(date) {
-            var originDate = date.sessionDate;
-            var newDate = new Date();
-            var seconds = (newDate.getTime() - originDate.getTime()) / 1000;
-            if (seconds > 18000) {
-                browser.storage.local.remove('langOrigin');
-                browser.storage.local.remove('langTarget');
-            }
-        });
-    } else {
-        browser.storage.local.set({ sessionDate: new Date() });
+    var langArray = ['FR', 'EN', 'DE', 'ES', 'IT', 'NL', 'PL'];
+    if ($.inArray(langUI, langArray) < 0) {
+        langUI = 'EN';
     }
-
-    // manage selected languages
-    var lang_origin = '';
-    var lang_target = '';
-
-    browser.storage.local.get('memoLang').then(function(item) {
-        if (item.memoLang === undefined || item.memoLang === '0') {
-            lang_origin = $('#lang-origin').val();
-            lang_target = $('#lang-target').val();
-        } else if (item.memoLang === '1') {
-            let getLangOrigin = browser.storage.local.get('langOrigin');
-            if ((getLangOrigin != undefined) && (getLangOrigin != '') && (getLangOrigin != null)) {
-                getLangOrigin.then(function(item2) {
-                    if (item2.langOrigin != undefined) {
-                        $('#lang-origin').val(item2.langOrigin);
-                    }
-                    lang_origin = item2.langOrigin;
-                });
-            }
-            let getLangTarget = browser.storage.local.get('langTarget');
-            if ((getLangTarget != undefined) && (getLangTarget != '') && (getLangTarget != null)) {
-                getLangTarget.then(function(item3) {
-                    if (item3.langTarget != undefined) {
-                        $('#lang-target').val(item3.langTarget);
-                    }
-                    lang_target = item3.langTarget;
-                });
-            }
-        }
-    });
 
     // add localization i18n items
     var name = browser.i18n.getMessage('deepLTName');
@@ -73,6 +31,7 @@ $(function() {
     $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated);
     $('.deepl img').attr('alt', name);
 
+    // update version app
     var manifest = chrome.runtime.getManifest();
     $('.version').html(manifest.version);
 
@@ -92,7 +51,7 @@ $(function() {
     // add event to open DeepL website
     $('.deepl img').on('click', function(){
         browser.tabs.create({
-            url: 'https://www.deepl.com/'
+            url: 'https://www.deepl.com/translator'
         });
     });
 
@@ -102,6 +61,16 @@ $(function() {
             url: 'https://github.com/Silbad/DeepLT'
         });
     });
+
+    // reset langs selection
+    function resetLangs() {
+        browser.storage.local.set({ langOrigin: 'auto' });
+        browser.storage.local.set({ langTarget: langUI });
+        $('#lang-origin').val('auto');
+        $('#lang-target').val(langUI);
+        tmpLangOrigin = $('#lang-origin').val();
+        tmpLangTarget = $('#lang-target').val();
+    }
 
     // add event to switch lang
     $('.arrow i').on('click', function(){
@@ -124,95 +93,145 @@ $(function() {
         browser.runtime.openOptionsPage()
     });
 
-    // add event translation system
-    var callID = 0;
+    // get local storage items
+    browser.storage.local.get(['sessionDate', 'langOrigin', 'langTarget', 'memoLang', 'typeTrad']).then(function(item) {
 
-    $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
+        var tmpSessionDate = item.sessionDate;
+        var tmpLangOrigin = item.langOrigin;
+        var tmpLangTarget = item.langTarget;
+        var tmpMemoLang = item.memoLang;
+        var tmpTypeTrad = item.typeTrad;
 
-        callID++;
-        var text = $('#trad-search').val().trim();
+        if (tmpMemoLang == undefined) {
+            tmpMemoLang = 0;
+            browser.storage.local.set({ memoLang: 0 });
+        }
 
-        browser.storage.local.get('memoLang').then(function(item){
-            if (item.memoLang === undefined || item.memoLang === '0') {
-                lang_origin = $('#lang-origin').val();
-                lang_target = $('#lang-target').val();
-            } else if (item.memoLang === '1') {
-                let getLangOrigin = browser.storage.local.get('langOrigin');
-                if ((getLangOrigin != undefined) && (getLangOrigin != '') && (getLangOrigin != null)) {
-                    getLangOrigin.then(function(item2){
-                        lang_origin = item2.langOrigin;
-                    });
-                }
-                let getLangTarget = browser.storage.local.get('langTarget');
-                if ((getLangTarget != undefined) && (getLangTarget != '') && (getLangTarget != null)) {
-                    getLangTarget.then(function(item3){
-                        lang_target = item3.langTarget;
-                    });
-                }
+        if (tmpTypeTrad == undefined) {
+            tmpTypeTrad = 0;
+            browser.storage.local.set({ typeTrad: 0 });
+        }
+
+        console.log(tmpSessionDate, tmpLangOrigin, tmpLangTarget, tmpMemoLang, tmpTypeTrad);
+
+        // session control
+        if ((tmpSessionDate != undefined) && (tmpSessionDate != '') && (tmpMemoLang == 1)) {
+
+            var newDate = new Date();
+            var seconds = (newDate.getTime() - tmpSessionDate.getTime()) / 1000;
+            // if session too old, create new one
+            if (seconds > 600) {
+                resetLangs();
+            } else {
+                $('#lang-origin').val(tmpLangOrigin);
+                $('#lang-target').val(tmpLangTarget);
             }
-        });
 
-		if (text.length < 3) {
-			$('#simple-result', '#carousel-result-0, #carousel-result-1, #carousel-result-2, #carousel-result-3', '#list-result-0, #list-result-1, #list-result-2, #list-result-3').val('');
-		}
-		else {
-			$.ajax({
-				url: 'https://cors-anywhere.herokuapp.com/https://www.deepl.com/jsonrpc',
-				contentType: 'text/plain',
-				type: 'POST',
-				dataType: 'json',
-				data: JSON.stringify({
-					jsonrpc: '2.0',
-					method: 'LMT_handle_jobs',
-					params: {
-						jobs: [{
-							kind: 'default',
-							raw_en_sentence: text
-						}],
-						lang: {
-							user_preferred_langs: [langUI,'EN'],
-							source_lang_user_selected: lang_origin,
-							target_lang: lang_target
-						},
-						priority: -1
-					},
-					id: callID
-				}),
-				success: function(response) {
-                    $('#simple-result').html(response.result.translations[0].beams[0].postprocessed_sentence);
+        } else {
+            resetLangs();
+        }
 
-					$('#carousel-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
-                    $('#carousel-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
-                    $('#carousel-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
-                    $('#carousel-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+        // add or update sessios date
+        browser.storage.local.set({ sessionDate: new Date() });
 
-                    $('#list-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
-                    $('#list-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
-                    $('#list-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
-                    $('#list-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
-				},
-				error:function(xhr,status,error) {
-                    $('#simple-result', '#carousel-result-0, #carousel-result-1, #carousel-result-2, #carousel-result-3', '#list-result-0, #list-result-1, #list-result-2, #list-result-3').html(error);
-				}
-			});
-		}
-    });
-
-    // management of alternative text display
-    browser.storage.local.get('typeTrad').then(function(item){
-    	if (item.typeTrad === undefined || item.typeTrad === '0') {
+        // management of alternative text display
+        if (tmpTypeTrad == 0) {
             $('.simple-result').addClass('d-block').removeClass('d-none');
             $('.carousel-result').addClass('d-none').removeClass('d-block');
             $('.list-result').addClass('d-none').removeClass('d-block');
-    	} else if (item.typeTrad === '1') {
+        } else if (tmpTypeTrad == 1) {
             $('.simple-result').addClass('d-none').removeClass('d-block');
             $('.carousel-result').addClass('d-block').removeClass('d-none');
             $('.list-result').addClass('d-none').removeClass('d-block');
-    	} else if (item.typeTrad === '2') {
+        } else if (tmpTypeTrad == 2) {
             $('.simple-result').addClass('d-none').removeClass('d-block');
             $('.carousel-result').addClass('d-none').removeClass('d-block');
             $('.list-result').addClass('d-block').removeClass('d-none');
-    	}
+        }
+
+        // add event translation system
+        var callID = 0;
+
+        var delay = (function(){
+            var timer = 0;
+            return function(callback, ms){
+                clearTimeout (timer);
+                timer = setTimeout(callback, ms);
+            };
+        })();
+
+        $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
+
+            var text = $('#trad-search').val().trim();
+
+    		if (text.length < 2) {
+                $('.bar').removeClass('bar-loading');
+    			$('#simple-result', '#carousel-result-0, #carousel-result-1, #carousel-result-2, #carousel-result-3', '#list-result-0, #list-result-1, #list-result-2, #list-result-3').val('');
+    		}
+    		else {
+                $('.bar').addClass('bar-loading');
+                delay(function(){
+                    callID++;
+        			$.ajax({
+        				url: 'https://cors-anywhere.herokuapp.com/https://www2.deepl.com/jsonrpc',
+        				contentType: 'text/plain',
+        				type: 'POST',
+        				dataType: 'json',
+        				data: JSON.stringify({
+        					jsonrpc: '2.0',
+        					method: 'LMT_handle_jobs',
+        					params: {
+        						jobs: [{
+        							kind: 'default',
+        							raw_en_sentence: text
+        						}],
+        						lang: {
+        							user_preferred_langs: [langUI,'EN'],
+        							source_lang_user_selected: tmpLangOrigin,
+        							target_lang: tmpLangTarget
+        						},
+        						priority: -1
+        					},
+        					id: callID
+        				}),
+        				success: function(response) {
+                            text = $('#trad-search').val().trim();
+                            $('.bar').removeClass('bar-loading');
+                            if (text.length > 1) {
+                                $('#simple-result').html(response.result.translations[0].beams[0].postprocessed_sentence);
+
+            					$('#carousel-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
+                                $('#carousel-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
+                                $('#carousel-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
+                                $('#carousel-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+
+                                $('#list-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
+                                $('#list-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
+                                $('#list-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
+                                $('#list-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+                            } else {
+                                $('#simple-result').html('');
+
+            					$('#carousel-result-0').html('');
+                                $('#carousel-result-1').html('');
+                                $('#carousel-result-2').html('');
+                                $('#carousel-result-3').html('');
+
+                                $('#list-result-0').html('');
+                                $('#list-result-1').html('');
+                                $('#list-result-2').html('');
+                                $('#list-result-3').html('');
+                            }
+        				},
+        				error:function(xhr,status,error) {
+                            $('.bar').removeClass('bar-loading');
+                            $('#simple-result', '#carousel-result-0, #carousel-result-1, #carousel-result-2, #carousel-result-3', '#list-result-0, #list-result-1, #list-result-2, #list-result-3').html(error);
+        				}
+        			});
+                }, 1000);
+    		}
+        });
+
     });
 
 });

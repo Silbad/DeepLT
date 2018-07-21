@@ -60,7 +60,7 @@
         "description": "Etiqueta de la tercera opción del primer parámetro"
     },
     "deepLTMemorizeLanguageSelection": {
-        "message": "Guardar idiomas seleccionados (5 min)",
+        "message": "Guardar idiomas seleccionados (10 min)",
         "description": "Etiqueta del segundo parámetro"
     },
     "deepLTMemorizeLanguageSelectionOption1": {

@@ -60,7 +60,7 @@
         "description": "Label of the third option of the first parameter"
     },
     "deepLTMemorizeLanguageSelection": {
-        "message": "Save selected languages (5 min)",
+        "message": "Save selected languages (10 min)",
         "description": "Label of the second parameter"
     },
     "deepLTMemorizeLanguageSelectionOption1": {

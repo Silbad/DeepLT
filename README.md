@@ -2,9 +2,7 @@
 A simple translation extension for Firefox powered by DeepL
 
 ## Screenshot
-![DeepLT](./screenshots/deeplt_1.4.0_1.png)
-![DeepLT](./screenshots/deeplt_1.4.0_2.png)
-![DeepLT](./screenshots/deeplt_1.4.0_3.png)
+![DeepLT](./screenshots/deeplt_1.5.0.png)
 
 ## Steps for dev
 * Install Node.js & Yarn [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
@@ -41,4 +39,4 @@ My Gulden account
 * [Bootstrap](https://getbootstrap.com)
 * [Yarn](https://yarnpkg.com)
 * [Gulp](https://gulpjs.com)
-* [Font Awesome](http://fontawesome.io/)
+* [Font Awesome](https://fontawesome.com/v4.7.0/)

@@ -17,6 +17,7 @@
     <div class="container-fluid d-flex flex-column p-1">
 
         <div class="locales d-flex">
+
             <div class="form-group p-1">
                 <select id="lang-origin" class="form-control" name="lang-origin">
                     <option value="auto"></option>
@@ -29,34 +30,44 @@
                     <option value="PL"></option>
                 </select>
             </div>
+
             <div class="arrow p-1">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </div>
-          <div class="form-group p-1">
-              <select id="lang-target" class="form-control" name="lang-target">
-                  <option value="FR"></option>
-                  <option value="EN"></option>
-                  <option value="DE"></option>
-                  <option value="ES"></option>
-                  <option value="IT"></option>
-                  <option value="NL"></option>
-                  <option value="PL"></option>
-              </select>
-          </div>
-      </div>
 
-      <div class="search">
-          <div class="form-group p-1">
+            <div class="form-group p-1">
+                <select id="lang-target" class="form-control" name="lang-target">
+                    <option value="FR"></option>
+                    <option value="EN"></option>
+                    <option value="DE"></option>
+                    <option value="ES"></option>
+                    <option value="IT"></option>
+                    <option value="NL"></option>
+                    <option value="PL"></option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="search input-group p-1">
             <input id="trad-search" type="text" class="form-control" placeholder="" aria-label="" />
-          </div>
-      </div>
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </span>
+            </div>
+        </div>
 
-      <div class="simple-result p-1 d-none">
-          <textarea id="simple-result" class="form-control" name="simple-result" readonly></textarea>
-      </div>
+        <div class="simple-result p-1 d-none">
+            <textarea id="simple-result" class="form-control" name="simple-result" readonly></textarea>
+        </div>
 
-      <div class="carousel-result d-none">
-          <div class="form-group p-1">
+        <div class="carousel-result d-none">
+            <div class="form-group p-1">
 
               <div id="carousel-trad" class="carousel slide" data-ride="false" data-interval="false">
 
@@ -70,45 +81,45 @@
                 <div class="carousel-inner">
 
                   <div class="carousel-item active">
-                    <textarea id="carousel-result-0" class="form-control" name="carousel-result-0" readonly></textarea>
+                      <textarea id="carousel-result-0" class="form-control" name="carousel-result-0" readonly></textarea>
                   </div>
 
                   <div class="carousel-item">
-                    <textarea id="carousel-result-1" class="form-control" name="carousel-result-1" readonly></textarea>
+                      <textarea id="carousel-result-1" class="form-control" name="carousel-result-1" readonly></textarea>
                   </div>
 
                   <div class="carousel-item">
-                    <textarea id="carousel-result-2" class="form-control" name="carousel-result-2" readonly></textarea>
+                      <textarea id="carousel-result-2" class="form-control" name="carousel-result-2" readonly></textarea>
                   </div>
 
                   <div class="carousel-item">
-                    <textarea id="carousel-result-3" class="form-control" name="carousel-result-3" readonly></textarea>
+                      <textarea id="carousel-result-3" class="form-control" name="carousel-result-3" readonly></textarea>
                   </div>
 
                 </div>
 
               </div>
 
-          </div>
-      </div>
+            </div>
+        </div>
 
-      <div class="list-result p-1 d-none">
-          <textarea id="list-result-0" class="form-control" name="list-result-0" readonly></textarea>
-          <textarea id="list-result-1" class="form-control" name="list-result-1" readonly></textarea>
-          <textarea id="list-result-2" class="form-control" name="list-result-2" readonly></textarea>
-          <textarea id="list-result-3" class="form-control" name="list-result-3" readonly></textarea>
-      </div>
+        <div class="list-result p-1 d-none">
+            <textarea id="list-result-0" class="form-control" name="list-result-0" readonly></textarea>
+            <textarea id="list-result-1" class="form-control" name="list-result-1" readonly></textarea>
+            <textarea id="list-result-2" class="form-control" name="list-result-2" readonly></textarea>
+            <textarea id="list-result-3" class="form-control" name="list-result-3" readonly></textarea>
+        </div>
 
-      <div class="d-flex justify-content-between align-items-stretch">
-          <div class="deepl">
+        <div class="d-flex justify-content-between align-items-stretch">
+            <div class="deepl">
               <img src="./../icons/deepl.svg" alt="" />
-          </div>
-          <div class="params d-flex align-items-center p-2">
+            </div>
+            <div class="params d-flex align-items-center p-2">
               <i class="fa fa-cog" aria-hidden="true"></i> <i class="fa fa-github" aria-hidden="true"></i>
-          </div>
-      </div>
+            </div>
+        </div>
 
-      <div class="version"></div>
+        <div class="version"></div>
 
     </div>
 

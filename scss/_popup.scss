@@ -55,3 +55,48 @@
     height: 60px;
     margin-bottom: 5px;
 }
+
+.loader
+{
+    width: 24px;
+    height: 16px;
+}
+
+.bar
+{
+    height: 10px;
+    width: 5px;
+    background-color: #CED5DB;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.bar-loading
+{
+    animation: loader-bar 1s infinite;
+    background-color: $deeplt-orange !important;
+}
+
+.loader .bar1
+{
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+.loader .bar2
+{
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+.loader .bar3
+{
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+@keyframes loader-bar
+{
+    30%
+    {
+        transform: scaleY(2);
+    }
+}
