@@ -7,30 +7,6 @@ $(function() {
         langUI = 'EN';
     }
 
-    // add localization i18n items
-    var name = browser.i18n.getMessage('deepLTName');
-    var description = browser.i18n.getMessage('deepLTDescription');
-    var auto = browser.i18n.getMessage('deepLTAuto');
-    var french = browser.i18n.getMessage('deepLTFrench');
-    var english = browser.i18n.getMessage('deepLTEnglish');
-    var german = browser.i18n.getMessage('deepLTGerman');
-    var spanish = browser.i18n.getMessage('deepLTSpanish');
-    var italian = browser.i18n.getMessage('deepLTItalian');
-    var dutch = browser.i18n.getMessage('deepLTDutch');
-    var polish = browser.i18n.getMessage('deepLTPolish');
-    var textToBeTranslated = browser.i18n.getMessage('deepLTTextToBeTranslated');
-
-    $('#lang-origin option[value="auto"]').html(auto);
-    $('#lang-origin option[value="FR"], #lang-target option[value="FR"]').html(french);
-    $('#lang-origin option[value="EN"], #lang-target option[value="EN"]').html(english);
-    $('#lang-origin option[value="DE"], #lang-target option[value="DE"]').html(german);
-    $('#lang-origin option[value="ES"], #lang-target option[value="ES"]').html(spanish);
-    $('#lang-origin option[value="IT"], #lang-target option[value="IT"]').html(italian);
-    $('#lang-origin option[value="NL"], #lang-target option[value="NL"]').html(dutch);
-    $('#lang-origin option[value="PL"], #lang-target option[value="PL"]').html(polish);
-    $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated);
-    $('.deepl img').attr('alt', name);
-
     // update version app
     var manifest = chrome.runtime.getManifest();
     $('.version').html(manifest.version);
@@ -63,11 +39,11 @@ $(function() {
     });
 
     // reset langs selection
-    function resetLangs() {
+    function resetLangs(langDefault) {
         browser.storage.local.set({ langOrigin: 'auto' });
-        browser.storage.local.set({ langTarget: langUI });
+        browser.storage.local.set({ langTarget: langDefault });
         $('#lang-origin').val('auto');
-        $('#lang-target').val(langUI);
+        $('#lang-target').val(langDefault);
         tmpLangOrigin = $('#lang-origin').val();
         tmpLangTarget = $('#lang-target').val();
     }
@@ -102,14 +78,29 @@ $(function() {
         var tmpMemoLang = item.memoLang;
         var tmpTypeTrad = item.typeTrad;
 
-        if (tmpMemoLang == undefined) {
+        if ((tmpMemoLang >= 0) == false) {
             tmpMemoLang = 0;
             browser.storage.local.set({ memoLang: 0 });
         }
 
-        if (tmpTypeTrad == undefined) {
+        if ((tmpTypeTrad >= 0) == false) {
             tmpTypeTrad = 0;
             browser.storage.local.set({ typeTrad: 0 });
+        }
+
+        // management of alternative text display
+        if (tmpTypeTrad == 1) {
+            $('.simple-result').addClass('d-none').removeClass('d-block');
+            $('.carousel-result').addClass('d-block').removeClass('d-none');
+            $('.list-result').addClass('d-none').removeClass('d-block');
+        } else if (tmpTypeTrad == 2) {
+            $('.simple-result').addClass('d-none').removeClass('d-block');
+            $('.carousel-result').addClass('d-none').removeClass('d-block');
+            $('.list-result').addClass('d-block').removeClass('d-none');
+        } else {
+            $('.simple-result').addClass('d-block').removeClass('d-none');
+            $('.carousel-result').addClass('d-none').removeClass('d-block');
+            $('.list-result').addClass('d-none').removeClass('d-block');
         }
 
         // session control
@@ -119,33 +110,18 @@ $(function() {
             var seconds = (newDate.getTime() - tmpSessionDate.getTime()) / 1000;
             // if session too old, create new one
             if (seconds > 600) {
-                resetLangs();
+                resetLangs(langUI);
             } else {
                 $('#lang-origin').val(tmpLangOrigin);
                 $('#lang-target').val(tmpLangTarget);
             }
 
         } else {
-            resetLangs();
+            resetLangs(langUI);
         }
 
         // add or update sessios date
         browser.storage.local.set({ sessionDate: new Date() });
-
-        // management of alternative text display
-        if (tmpTypeTrad == 0) {
-            $('.simple-result').addClass('d-block').removeClass('d-none');
-            $('.carousel-result').addClass('d-none').removeClass('d-block');
-            $('.list-result').addClass('d-none').removeClass('d-block');
-        } else if (tmpTypeTrad == 1) {
-            $('.simple-result').addClass('d-none').removeClass('d-block');
-            $('.carousel-result').addClass('d-block').removeClass('d-none');
-            $('.list-result').addClass('d-none').removeClass('d-block');
-        } else if (tmpTypeTrad == 2) {
-            $('.simple-result').addClass('d-none').removeClass('d-block');
-            $('.carousel-result').addClass('d-none').removeClass('d-block');
-            $('.list-result').addClass('d-block').removeClass('d-none');
-        }
 
         // add event translation system
         var callID = 0;
@@ -161,6 +137,8 @@ $(function() {
         $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
 
             var text = $('#trad-search').val().trim();
+            tmpLangOrigin = $('#lang-origin').val();
+            tmpLangTarget = $('#lang-target').val();
 
     		if (text.length < 2) {
                 $('.bar').removeClass('bar-loading');
@@ -197,16 +175,23 @@ $(function() {
                             $('.bar').removeClass('bar-loading');
                             if (text.length > 1) {
                                 $('#simple-result').html(response.result.translations[0].beams[0].postprocessed_sentence);
-
             					$('#carousel-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
-                                $('#carousel-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
-                                $('#carousel-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
-                                $('#carousel-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
-
                                 $('#list-result-0').html(response.result.translations[0].beams[0].postprocessed_sentence);
-                                $('#list-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
-                                $('#list-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
-                                $('#list-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+
+                                if(response.result.translations[0].beams[1] != undefined) {
+                                    $('#carousel-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
+                                    $('#list-result-1').html(response.result.translations[0].beams[1].postprocessed_sentence);
+                                }
+
+                                if(response.result.translations[0].beams[2] != undefined) {
+                                    $('#carousel-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
+                                    $('#list-result-2').html(response.result.translations[0].beams[2].postprocessed_sentence);
+                                }
+
+                                if(response.result.translations[0].beams[3] != undefined) {
+                                    $('#carousel-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+                                    $('#list-result-3').html(response.result.translations[0].beams[3].postprocessed_sentence);
+                                }
                             } else {
                                 $('#simple-result').html('');
 
@@ -231,5 +216,29 @@ $(function() {
         });
 
     });
+
+    // add localization i18n items
+    var name = browser.i18n.getMessage('deepLTName');
+    var description = browser.i18n.getMessage('deepLTDescription');
+    var auto = browser.i18n.getMessage('deepLTAuto');
+    var french = browser.i18n.getMessage('deepLTFrench');
+    var english = browser.i18n.getMessage('deepLTEnglish');
+    var german = browser.i18n.getMessage('deepLTGerman');
+    var spanish = browser.i18n.getMessage('deepLTSpanish');
+    var italian = browser.i18n.getMessage('deepLTItalian');
+    var dutch = browser.i18n.getMessage('deepLTDutch');
+    var polish = browser.i18n.getMessage('deepLTPolish');
+    var textToBeTranslated = browser.i18n.getMessage('deepLTTextToBeTranslated');
+
+    $('#lang-origin option[value="auto"]').html(auto);
+    $('#lang-origin option[value="FR"], #lang-target option[value="FR"]').html(french);
+    $('#lang-origin option[value="EN"], #lang-target option[value="EN"]').html(english);
+    $('#lang-origin option[value="DE"], #lang-target option[value="DE"]').html(german);
+    $('#lang-origin option[value="ES"], #lang-target option[value="ES"]').html(spanish);
+    $('#lang-origin option[value="IT"], #lang-target option[value="IT"]').html(italian);
+    $('#lang-origin option[value="NL"], #lang-target option[value="NL"]').html(dutch);
+    $('#lang-origin option[value="PL"], #lang-target option[value="PL"]').html(polish);
+    $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated);
+    $('.deepl img').attr('alt', name);
 
 });
