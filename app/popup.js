@@ -6,7 +6,7 @@ $(function() {
     if ($.inArray(langUI, langArray) < 0) {
         langUI = 'EN';
     }
-
+    
     // update version app
     var manifest = chrome.runtime.getManifest();
     $('.version').html(manifest.version);
@@ -44,8 +44,6 @@ $(function() {
         browser.storage.local.set({ langTarget: langDefault });
         $('#lang-origin').val('auto');
         $('#lang-target').val(langDefault);
-        tmpLangOrigin = $('#lang-origin').val();
-        tmpLangTarget = $('#lang-target').val();
     }
 
     // add event to switch lang
@@ -57,7 +55,11 @@ $(function() {
             $('#lang-target').val(tmpOrigin);
         } else {
             $('#lang-origin').val(tmpTarget);
-            $('#lang-target').val(langUI);
+            if (tmpTarget != langUI) {
+                $('#lang-target').val(langUI);
+            } else {
+                $('#lang-target').val('EN');
+            }
         }
         browser.storage.local.set({ langOrigin: tmpTarget });
         browser.storage.local.set({ langTarget: tmpOrigin });
@@ -111,6 +113,8 @@ $(function() {
             // if session too old, create new one
             if (seconds > 600) {
                 resetLangs(langUI);
+                tmpLangOrigin = $('#lang-origin').val();
+                tmpLangTarget = $('#lang-target').val();
             } else {
                 $('#lang-origin').val(tmpLangOrigin);
                 $('#lang-target').val(tmpLangTarget);
@@ -118,6 +122,8 @@ $(function() {
 
         } else {
             resetLangs(langUI);
+            tmpLangOrigin = $('#lang-origin').val();
+            tmpLangTarget = $('#lang-target').val();
         }
 
         // add or update sessios date
@@ -238,7 +244,8 @@ $(function() {
     $('#lang-origin option[value="IT"], #lang-target option[value="IT"]').html(italian);
     $('#lang-origin option[value="NL"], #lang-target option[value="NL"]').html(dutch);
     $('#lang-origin option[value="PL"], #lang-target option[value="PL"]').html(polish);
-    $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated);
     $('.deepl img').attr('alt', name);
+    // localizaton and focus on field
+    $('#trad-search').attr('placeholder', textToBeTranslated).attr('aria-label', textToBeTranslated).focus();
 
 });
