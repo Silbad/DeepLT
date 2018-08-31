@@ -1,28 +1,8 @@
 $(function() {
 
-    // get lang from UI
-    var langUI = browser.i18n.getUILanguage().toUpperCase();
-    var langArray = ['FR', 'EN', 'DE', 'ES', 'IT', 'NL', 'PL'];
-    if ($.inArray(langUI, langArray) < 0) {
-        langUI = 'EN';
-    }
-    
     // update version app
     var manifest = chrome.runtime.getManifest();
     $('.version').html(manifest.version);
-
-    // add event to memorize selected languages
-    $('#lang-origin').on('change', function() {
-        var tmpVal = $(this).val();
-        browser.storage.local.set({ langOrigin: tmpVal });
-        browser.storage.local.set({ sessionDate: new Date() });
-    });
-
-    $('#lang-target').on('change', function() {
-        var tmpVal = $(this).val();
-        browser.storage.local.set({ langTarget: tmpVal });
-        browser.storage.local.set({ sessionDate: new Date() });
-    });
 
     // add event to open DeepL website
     $('.deepl img').on('click', function(){
@@ -38,34 +18,6 @@ $(function() {
         });
     });
 
-    // reset langs selection
-    function resetLangs(langDefault) {
-        browser.storage.local.set({ langOrigin: 'auto' });
-        browser.storage.local.set({ langTarget: langDefault });
-        $('#lang-origin').val('auto');
-        $('#lang-target').val(langDefault);
-    }
-
-    // add event to switch lang
-    $('.arrow i').on('click', function(){
-        var tmpOrigin = $('#lang-origin').val();
-        var tmpTarget = $('#lang-target').val();
-        if (tmpOrigin != 'auto') {
-            $('#lang-origin').val(tmpTarget);
-            $('#lang-target').val(tmpOrigin);
-        } else {
-            $('#lang-origin').val(tmpTarget);
-            if (tmpTarget != langUI) {
-                $('#lang-target').val(langUI);
-            } else {
-                $('#lang-target').val('EN');
-            }
-        }
-        browser.storage.local.set({ langOrigin: tmpTarget });
-        browser.storage.local.set({ langTarget: tmpOrigin });
-        browser.storage.local.set({ sessionDate: new Date() });
-    });
-
     // add event to open params
     $('.params .fa-cog').on('click', function(){
         browser.runtime.openOptionsPage()
@@ -73,6 +25,13 @@ $(function() {
 
     // get local storage items
     browser.storage.local.get(['sessionDate', 'langOrigin', 'langTarget', 'memoLang', 'typeTrad']).then(function(item) {
+
+        // get lang from UI
+        var langUI = browser.i18n.getUILanguage().toUpperCase();
+        var langArray = ['FR', 'EN', 'DE', 'ES', 'IT', 'NL', 'PL'];
+        if ($.inArray(langUI, langArray) < 0) {
+            langUI = 'EN';
+        }
 
         var tmpSessionDate = item.sessionDate;
         var tmpLangOrigin = item.langOrigin;
@@ -110,9 +69,14 @@ $(function() {
 
             var newDate = new Date();
             var seconds = (newDate.getTime() - tmpSessionDate.getTime()) / 1000;
-            // if session too old, create new one
-            if (seconds > 600) {
-                resetLangs(langUI);
+
+            // if session too old, create new one (10  minutes)
+            if (seconds > 4) {
+                browser.storage.local.set({ langOrigin: 'auto' });
+                browser.storage.local.set({ langTarget: langUI });
+                $('#lang-origin').val('auto');
+                $('#lang-target').val(langUI);
+
                 tmpLangOrigin = $('#lang-origin').val();
                 tmpLangTarget = $('#lang-target').val();
             } else {
@@ -121,12 +85,16 @@ $(function() {
             }
 
         } else {
-            resetLangs(langUI);
+            browser.storage.local.set({ langOrigin: 'auto' });
+            browser.storage.local.set({ langTarget: langUI });
+            $('#lang-origin').val('auto');
+            $('#lang-target').val(langUI);
+
             tmpLangOrigin = $('#lang-origin').val();
             tmpLangTarget = $('#lang-target').val();
         }
 
-        // add or update sessios date
+        // add or update session date
         browser.storage.local.set({ sessionDate: new Date() });
 
         // add event translation system
@@ -139,6 +107,39 @@ $(function() {
                 timer = setTimeout(callback, ms);
             };
         })();
+
+        // add event to memorize selected languages
+        $('#lang-origin').on('change', function() {
+            var tmpVal = $(this).val();
+            browser.storage.local.set({ langOrigin: tmpVal });
+            browser.storage.local.set({ sessionDate: new Date() });
+        });
+
+        $('#lang-target').on('change', function() {
+            var tmpVal = $(this).val();
+            browser.storage.local.set({ langTarget: tmpVal });
+            browser.storage.local.set({ sessionDate: new Date() });
+        });
+
+        // add event to switch lang
+        $('.arrow i').on('click', function(){
+            var tmpOrigin = $('#lang-origin').val();
+            var tmpTarget = $('#lang-target').val();
+            if (tmpOrigin != 'auto') {
+                $('#lang-origin').val(tmpTarget);
+                $('#lang-target').val(tmpOrigin);
+            } else {
+                $('#lang-origin').val(tmpTarget);
+                if (tmpTarget != langUI) {
+                    $('#lang-target').val(langUI);
+                } else {
+                    $('#lang-target').val('EN');
+                }
+            }
+            browser.storage.local.set({ langOrigin: tmpTarget });
+            browser.storage.local.set({ langTarget: tmpOrigin });
+            browser.storage.local.set({ sessionDate: new Date() });
+        });
 
         $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
 
