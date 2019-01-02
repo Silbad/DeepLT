@@ -144,8 +144,28 @@ $(function() {
         $('#trad-search, #lang-origin, #lang-target').on('keyup change', function() {
 
             var text = $('#trad-search').val().trim();
+            var tmpTimestamp = Date.now();
             tmpLangOrigin = $('#lang-origin').val();
             tmpLangTarget = $('#lang-target').val();
+            var request = JSON.stringify({
+                jsonrpc: '2.0',
+                method: 'LMT_handle_jobs',
+                params: {
+                    jobs: [{
+                        kind: 'default',
+                        quality: 'fast',
+                        raw_en_sentence: text
+                    }],
+                    lang: {
+                        user_preferred_langs: [langUI,'EN'],
+                        source_lang_user_selected: tmpLangOrigin,
+                        target_lang: tmpLangTarget
+                    },
+                    priority: -1,
+                    timestamp: tmpTimestamp
+                },
+                id: callID
+            });
 
     		if (text.length < 2) {
                 $('.bar').removeClass('bar-loading');
@@ -156,27 +176,11 @@ $(function() {
                 delay(function(){
                     callID++;
         			$.ajax({
-        				url: 'https://cors-anywhere.herokuapp.com/https://www2.deepl.com/jsonrpc',
-        				contentType: 'text/plain',
+        				url: 'https://www2.deepl.com/jsonrpc',
+        				contentType: 'application/json',
         				type: 'POST',
-        				dataType: 'json',
-        				data: JSON.stringify({
-        					jsonrpc: '2.0',
-        					method: 'LMT_handle_jobs',
-        					params: {
-        						jobs: [{
-        							kind: 'default',
-        							raw_en_sentence: text
-        						}],
-        						lang: {
-        							user_preferred_langs: [langUI,'EN'],
-        							source_lang_user_selected: tmpLangOrigin,
-        							target_lang: tmpLangTarget
-        						},
-        						priority: -1
-        					},
-        					id: callID
-        				}),
+        				data: request,
+                        dataType: 'json',
         				success: function(response) {
                             text = $('#trad-search').val().trim();
                             $('.bar').removeClass('bar-loading');
