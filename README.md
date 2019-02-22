@@ -1,3 +1,5 @@
+# /!\ Attention! This WebExtension no longer works for the moment and is therefore no longer maintained, because Deepl has become profitable.
+
 # DeepLT
 A simple translation extension for Firefox powered by DeepL
 
