@@ -1,0 +1,218 @@
+{
+    "note": {
+        "message": "Please note that the Deepl API needs a key to work.",
+        "description": ""
+    },
+    "save": {
+        "message": "Save",
+        "description": ""
+    },
+    "api_deepl_key": {
+        "message": "API Deepl key",
+        "description": ""
+    },
+    "free": {
+        "message": "Free",
+        "description": ""
+    },
+    "pro": {
+        "message": "Pro",
+        "description": ""
+    },
+    "cost_control": {
+        "message": "Cost control",
+        "description": ""
+    },
+    "limit": {
+        "message": "Limit of $1 characters per month, an estimated additional cost of $2",
+        "description": ""
+    },
+    "cost": {
+        "message": "This month, you have used $1 characters, which is an estimated additional cost of $2",
+        "description": ""
+    },
+    "firefox_storage_type": {
+        "message": "Firefox storage type",
+        "description": ""
+    },
+    "local": {
+        "message": "Only on this device",
+        "description": ""
+    },
+    "sync": {
+        "message": "On all your devices",
+        "description": ""
+    },
+    "translate": {
+        "message": "Translate « $1 »",
+        "description": ""
+    },
+    "something": {
+        "message": "Something to translate...",
+        "description": ""
+    },
+    "on": {
+        "message": "Translate on Deepl",
+        "description": ""
+    },
+    "with": {
+        "message": "Translate with Deepl",
+        "description": ""
+    },
+    "consumption": {
+        "message": "Consumption",
+        "description": ""
+    },
+    "error": {
+        "message": "Error",
+        "description": ""
+    },
+    "error_apikey": {
+        "message": "Your Deepl API key is not valid",
+        "description": ""
+    },
+    "error_apikey_required": {
+        "message": "The Deepl API key is required",
+        "description": ""
+    },
+    "error_save_data": {
+        "message": "Your data could not be saved",
+        "description": ""
+    },
+    "error_remove_data": {
+        "message": "Your data has not been deleted",
+        "description": ""
+    },
+    "error_limit_consumption": {
+        "message": "Sorry, with this translation, you exceed the consumption limit",
+        "description": ""
+    },
+    "congratulations_save_data_local": {
+        "message": "Your data has been saved locally",
+        "description": ""
+    },
+    "congratulations_save_data_sync": {
+        "message": "Your data has been backed up on all your devices",
+        "description": ""
+    },
+    "congratulations_remove_data": {
+        "message": "Your data has been deleted",
+        "description": ""
+    },
+    "congratulations_copy_translation": {
+        "message": "The translation has been copied to your clipboard",
+        "description": ""
+    },
+    "confirm_remove_data": {
+        "message": "Do you really want to delete this data?",
+        "description": ""
+    },
+    "remove_data": {
+        "message": "Remove data",
+        "description": ""
+    },
+    "congratulations": {
+        "message": "Congratulations",
+        "description": ""
+    },
+    "api_key_placeholder": {
+        "message": "Enter your Deepl API key here",
+        "description": ""
+    },
+    "Bulgarian": {
+        "message": "Bulgarian",
+        "description": ""
+    },
+    "Czech": {
+        "message": "Czech",
+        "description": ""
+    },
+    "Danish": {
+        "message": "Danish",
+        "description": ""
+    },
+    "German": {
+        "message": "German",
+        "description": ""
+    },
+    "Greek": {
+        "message": "Greek",
+        "description": ""
+    },
+    "English": {
+        "message": "English",
+        "description": ""
+    },
+    "Spanish": {
+        "message": "Spanish",
+        "description": ""
+    },
+    "Estonian": {
+        "message": "Estonian",
+        "description": ""
+    },
+    "Finnish": {
+        "message": "Finnish",
+        "description": ""
+    },
+    "French": {
+        "message": "French",
+        "description": ""
+    },
+    "Hungarian": {
+        "message": "Hungarian",
+        "description": ""
+    },
+    "Italian": {
+        "message": "Italian",
+        "description": ""
+    },
+    "Japanese": {
+        "message": "Japanese",
+        "description": ""
+    },
+    "Lithuanian": {
+        "message": "Lithuanian",
+        "description": ""
+    },
+    "Latvian": {
+        "message": "Latvian",
+        "description": ""
+    },
+    "Dutch": {
+        "message": "Dutch",
+        "description": ""
+    },
+    "Polish": {
+        "message": "Polish",
+        "description": ""
+    },
+    "Portuguese": {
+        "message": "Portuguese",
+        "description": ""
+    },
+    "Romanian": {
+        "message": "Romanian",
+        "description": ""
+    },
+    "Russian": {
+        "message": "Russian",
+        "description": ""
+    },
+    "Slovak": {
+        "message": "Slovak",
+        "description": ""
+    },
+    "Slovenian": {
+        "message": "Slovenian",
+        "description": ""
+    },
+    "Swedish": {
+        "message": "Swedish",
+        "description": ""
+    },
+    "Chinese": {
+        "message": "Chinese",
+        "description": ""
+    }
+}

@@ -1,44 +1,79 @@
-# /!\ Attention! This WebExtension no longer works for the moment and is therefore no longer maintained, because Deepl has become profitable.
-
 # DeepLT
+
 A simple translation extension for Firefox powered by DeepL
 
-## Screenshot
-![DeepLT](./screenshots/deeplt_1.5.0.png)
+## Development
 
-## Steps for dev
-* Install Node.js & Yarn [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
-* Launch a cmd window
-* Open your clone folder :
-```
-cd C:\path_to_folder
-```
-* Get dependencies :
-```
-yarn
-```
-* Launch Gulp tasks :
-```
-yarn gulp
-```
-* Launch the WebExtension :
-```
-yarn web-ext run
+```bash
+npm i
 ```
 
-## Firefox Add-ons
-[https://addons.mozilla.org/fr/firefox/addon/deeplt/](https://addons.mozilla.org/fr/firefox/addon/deeplt/)
+**Chrome**
 
-## Help me with donations
-My Gulden account
+```bash
+npm run app:chrome-dev
+```
 
-![DeepLT](./donation/gulden_silbad.png)
+**Edge**
 
-## Specials thanks
-* [Deepl Translator](https://www.deepl.com/translator)
-* [Mozilla](https://www.mozilla.org)
-* [jQuery](https://jquery.com)
-* [Bootstrap](https://getbootstrap.com)
-* [Yarn](https://yarnpkg.com)
-* [Gulp](https://gulpjs.com)
-* [Font Awesome](https://fontawesome.com/v4.7.0/)
+```bash
+npm run app:edge-dev
+```
+
+**Firefox**
+
+```bash
+npm run app:firefox-dev
+```
+
+## Production
+
+```bash
+npm i
+```
+
+```bash
+npm run app:chrome
+```
+
+**Edge**
+
+```bash
+npm run app:edge
+```
+
+**Firefox**
+
+```bash
+npm run app:firefox
+```
+
+## Load package to browsers
+
+**Chrome**
+
+1. Go to the browser's URL address bar
+2. Enter `chrome://extensions/`
+3. Switch to "**Developer mode**"
+4. Load extension by clicking "**Load unpacked**"
+5. Browse to `dist/` in source code
+6. Done!
+
+Check here for more detail: [https://developer.chrome.com/extensions/getstarted](https://developer.chrome.com/extensions/getstarted)
+
+**Edge**
+
+1. Go to the browser's URL address bar
+2. Enter `edge://extensions/`
+3. Turn on `Developer mode`
+4. Load extension by clicking "**Load unpacked**"
+5. Browse to `dist/` in source code
+6. Done!
+
+**Firefox**
+
+1. Go to the browser's URL address bar
+2. Enter `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on...**
+4. Browse to your `manifest.json` & click **Open**
+5. Done!

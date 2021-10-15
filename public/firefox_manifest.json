@@ -1,0 +1,47 @@
+{
+    "name": "DeepLT",
+    "version": "2.0.0",
+    "description": "A simple translation extension for Firefox powered by DeepL",
+    "permissions": [
+        "clipboardWrite",
+        "menus",
+        "storage",
+        "notifications",
+        "activeTab",
+        "<all_urls>"
+    ],
+    "manifest_version": 2,
+    "default_locale": "en",
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{2d7fda62-1b5e-4e2b-96bd-9eed1ee4647a}"
+        }
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "browser_style": true,
+        "default_icon": {
+            "16": "images/logo/deeplt-16.png",
+            "32": "images/logo/deeplt-32.png",
+            "48": "images/logo/deeplt-48.png",
+            "128": "images/logo/deeplt-128.png"
+        },
+        "default_title": "DeepLT"
+    },
+    "icons": {
+        "16": "images/logo/deeplt-16.png",
+        "32": "images/logo/deeplt-32.png",
+        "48": "images/logo/deeplt-48.png",
+        "128": "images/logo/deeplt-128.png"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "browser_style": true
+    }
+}

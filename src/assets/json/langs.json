@@ -1,0 +1,98 @@
+[
+    {
+        "code": "BG",
+        "label": "Bulgarian"
+    },
+    {
+        "code": "CS",
+        "label": "Czech"
+    },
+    {
+        "code": "DA",
+        "label": "Danish"
+    },
+    {
+        "code": "DE",
+        "label": "German"
+    },
+    {
+        "code": "EL",
+        "label": "Greek"
+    },
+    {
+        "code": "EN",
+        "label": "English"
+    },
+    {
+        "code": "ES",
+        "label": "Spanish"
+    },
+    {
+        "code": "ET",
+        "label": "Estonian"
+    },
+    {
+        "code": "FI",
+        "label": "Finnish"
+    },
+    {
+        "code": "FR",
+        "label": "French"
+    },
+    {
+        "code": "HU",
+        "label": "Hungarian"
+    },
+    {
+        "code": "IT",
+        "label": "Italian"
+    },
+    {
+        "code": "JA",
+        "label": "Japanese"
+    },
+    {
+        "code": "LT",
+        "label": "Lithuanian"
+    },
+    {
+        "code": "LV",
+        "label": "Latvian"
+    },
+    {
+        "code": "NL",
+        "label": "Dutch"
+    },
+    {
+        "code": "PL",
+        "label": "Polish"
+    },
+    {
+        "code": "PT",
+        "label": "Portuguese"
+    },
+    {
+        "code": "RO",
+        "label": "Romanian"
+    },
+    {
+        "code": "RU",
+        "label": "Russian"
+    },
+    {
+        "code": "SK",
+        "label": "Slovak"
+    },
+    {
+        "code": "SL",
+        "label": "Slovenian"
+    },
+    {
+        "code": "SV",
+        "label": "Swedish"
+    },
+    {
+        "code": "ZH",
+        "label": "Chinese"
+    }
+]
