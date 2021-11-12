@@ -1,6 +1,6 @@
 {
     "name": "DeepLT",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "A simple translation extension for Firefox powered by DeepL",
     "permissions": [
         "clipboardWrite",
